@@ -1,41 +1,50 @@
-// import { useState, useEffect } from "react";
-import "./styles.css";
-import { Scissor } from "./components/Scissor";
-import { Login } from "./components/Login";
-import { Contact } from "./components/Contact";
-import { Qrcode } from "./components/Qrcode";
-import { Signup } from "./components/Signup";
 import { Routes, Route } from "react-router-dom";
-// import { auth } from "./firebase";
+import { AuthProvider } from "./context/AuthContext";
+import { ProtectedRoute } from "./components/ui/ProtectedRoute";
+import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
+import { Home } from "./pages/Home";
+import { Dashboard } from "./pages/Dashboard";
+import { Contact } from "./pages/Contact";
+import { Login } from "./pages/Login";
+import { Signup } from "./pages/Signup";
+import { ForgotPassword } from "./pages/ForgotPassword";
+import "./styles/global.css";
 
-// import { Analytics } from "./components/Analytics";
+const Layout = ({ children }: { children: React.ReactNode }) => (
+  <>
+    <Header />
+    <main>{children}</main>
+    <Footer />
+  </>
+);
 
-export default function App() {
-  // const [user, setUser] = useState(null);
-  // const [initialLoad, setInitialLoad] = useState(true);
+const AuthLayout = ({ children }: { children: React.ReactNode }) => (
+  <main>{children}</main>
+);
 
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((user) => {
-  //     setUser(user);
-  //     setInitialLoad(false);
-  //   });
-  // }, []);
-
-  // if(initialLoad)
+function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Scissor />} />
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Signup" element={<Signup />} />
-      <Route path="/Qrcode" element={<Qrcode />} />
-      <Route path="/Contact" element={<Contact />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route
+          path="/dashboard"
+          element={
+            <Layout>
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            </Layout>
+          }
+        />
+        <Route path="/contact" element={<Layout><Contact /></Layout>} />
+        <Route path="/login" element={<AuthLayout><Login /></AuthLayout>} />
+        <Route path="/signup" element={<AuthLayout><Signup /></AuthLayout>} />
+        <Route path="/forgot-password" element={<AuthLayout><ForgotPassword /></AuthLayout>} />
+      </Routes>
+    </AuthProvider>
   );
 }
-//
-// {
-/* <Linkresult inputValue={inputValue}/> */
-// }
-// {
-/* <Urlshortener setInputValue={setInputValue}/> */
-// }
+
+export default App;

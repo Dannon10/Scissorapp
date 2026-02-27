@@ -1,0 +1,15 @@
+{
+  "short_name": "Scissors",
+  "name": "Scissors URL Shortener",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0065fe",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

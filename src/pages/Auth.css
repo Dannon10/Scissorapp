@@ -1,0 +1,348 @@
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: linear-gradient(180deg, #f0f5ff 0%, #ffffff 60%);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.auth-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.auth-card h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.auth-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* Error banner */
+.auth-error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 11px 14px;
+    background: rgba(220, 38, 38, 0.06);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius);
+    color: var(--error);
+    font-size: 13px;
+    margin-bottom: 16px;
+    text-align: left;
+    animation: shake 0.35s ease;
+}
+
+.auth-error-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    60% {
+        transform: translateX(6px);
+    }
+
+    80% {
+        transform: translateX(-3px);
+    }
+}
+
+/* Form */
+.auth-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 11px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-group input:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Password show/hide */
+.password-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrap input {
+    padding-right: 64px;
+    width: 100%;
+}
+
+.show-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    height: auto;
+    padding: 4px 2px;
+    line-height: 1;
+    z-index: 1;
+    transition: opacity 0.2s;
+}
+
+.show-password:hover {
+    opacity: 0.7;
+}
+
+/* Password strength  */
+.password-strength {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.strength-bar {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+}
+
+.strength-bar span {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--surface-2);
+    transition: background 0.3s;
+}
+
+.strength-bar.weak span:nth-child(1) {
+    background: var(--error);
+}
+
+.strength-bar.fair span:nth-child(1),
+.strength-bar.fair span:nth-child(2) {
+    background: #f59e0b;
+}
+
+.strength-bar.strong span {
+    background: var(--success);
+}
+
+.strength-label {
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.strength-label.weak {
+    color: var(--error);
+}
+
+.strength-label.fair {
+    color: #f59e0b;
+}
+
+.strength-label.strong {
+    color: var(--success);
+}
+
+/* Forgot link*/
+.forgot-link {
+    font-size: 12px;
+    color: var(--accent);
+    text-align: right;
+    margin-top: -4px;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* Submit button  */
+.auth-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 13px;
+    background: var(--accent);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    height: auto;
+    margin-top: 4px;
+    box-shadow: var(--shadow-md);
+    transition: background 0.2s, opacity 0.2s;
+    text-decoration: none;
+}
+
+.auth-submit:hover:not(:disabled) {
+    background: var(--accent-dark);
+}
+
+.auth-submit:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* ── Button spinner ── */
+.btn-spinner {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Bottom text ── */
+.auth-switch {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.auth-switch a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.auth-terms {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.auth-terms a {
+    color: var(--accent);
+}
+
+/* ── Reset password success ── */
+.reset-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+.reset-icon {
+    font-size: 36px;
+    width: 72px;
+    height: 72px;
+    background: var(--accent-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.reset-success h1 {
+    font-size: 24px;
+}
+
+.reset-success p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.reset-success p strong {
+    color: var(--text-primary);
+}
+
+.back-to-login {
+    margin-top: 8px;
+    width: 100%;
+}
