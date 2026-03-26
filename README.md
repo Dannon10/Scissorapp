@@ -6,6 +6,9 @@ A full-stack URL shortening web app built with React, TypeScript, and Firebase. 
 
 ---
 
+## Demo video
+Watch here: https://youtu.be/VDjq-MyY8Rc
+
 ## Features
 
 - **URL Shortening** — Paste any long URL and get a clean short link via the TinyURL API
